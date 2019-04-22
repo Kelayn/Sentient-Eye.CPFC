@@ -3,9 +3,9 @@ package com.example.sentient_eyecpfc;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,14 +24,16 @@ public class ScannerFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        TextView txtView = Objects.requireNonNull(getView()).findViewById(R.id.txtContent);
-        Button btn_scan = getView().findViewById(R.id.button_scan);
+        View view = inflater.inflate(R.layout.activity_barcode_detect, container, false);
 
-        ImageView scanImageView = getView().findViewById(R.id.img_scan);
-        Bitmap bitmap = BitmapFactory.decodeResource(Objects.requireNonNull(getActivity()).getApplicationContext().getResources(), R.drawable.puppy);
+        TextView txtView = view.findViewById(R.id.txtContent);
+        Button btn_scan = view.findViewById(R.id.button_scan);
+
+        ImageView scanImageView = view.findViewById(R.id.img_scan);
+        Bitmap bitmap = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.puppy);
         scanImageView.setImageBitmap(bitmap);
 
-        BarcodeDetector detector = new BarcodeDetector.Builder(getActivity().getApplicationContext())
+        BarcodeDetector detector = new BarcodeDetector.Builder(getActivity())
                 .setBarcodeFormats(Barcode.DATA_MATRIX | Barcode.QR_CODE).build();
 
         if (!detector.isOperational()) {
@@ -51,6 +53,6 @@ public class ScannerFragment extends Fragment {
             }
         });
 
-        return inflater.inflate(R.layout.activity_barcode_detect, container, false);
+        return view;
     }
 }

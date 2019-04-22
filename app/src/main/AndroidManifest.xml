@@ -4,7 +4,6 @@
     package="com.example.sentient_eyecpfc">
 
     <application
-        android:name="android.support.multidex.MultiDexApplication"
         tools:ignore="ExtraText,GoogleAppIndexingWarning"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
