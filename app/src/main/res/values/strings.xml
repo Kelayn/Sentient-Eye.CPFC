@@ -3,5 +3,6 @@
     <string name="scan_discr">Scanner icon</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="find_btn">Scan code</string>
 
 </resources>

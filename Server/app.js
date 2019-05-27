@@ -3,6 +3,7 @@ const express = require("express");
 const Schema = mongoose.Schema;
 const app = express();
 const jsonParser = express.json();
+const morgan = require("morgan")
 
 const productSchema = new Schema({
     code: {
@@ -28,6 +29,8 @@ mongoose.connect("mongodb://localhost:27017/CPFC_DB", {useNewUrlParser: true}, f
     });
 });
 
+app.use(morgan("dev"));
+
 app.get("/api/products", function (req, res) {
     Product.find({}, function (err, products) {
         if (err) return console.log(err);
@@ -38,8 +41,9 @@ app.get("/api/products", function (req, res) {
 app.get("/api/products/:code", function (req, res) {
     const code = req.params.code;
     Product.findOne({code: code}, function (err, product) {
-        if (err) return console.log(err);;
-        res.send(product);
+        if (err) return console.log(err);
+        if (product) res.send(product);
+        else res.status(404).send({name:"Not Found"});
     })
 });
 
@@ -72,7 +76,7 @@ app.post("/api/products", jsonParser, function (req, res) {
         },
         function (err, doc) {
             if (err) return console.log(err);
-            console.log("Сохранен объект product", doc);
+            res.send(doc);
         });
 });
 
