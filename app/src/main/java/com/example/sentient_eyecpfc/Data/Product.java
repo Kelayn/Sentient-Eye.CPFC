@@ -23,6 +23,14 @@ public class Product {
     @Expose
     private Double fats;
 
+    public Product(String code, String name, Double calories, Double proteins, Double carbohydrates, Double fats) {
+        this.code = code;
+        this.name = name;
+        this.calories = calories;
+        this.proteins = proteins;
+        this.carbohydrates = carbohydrates;
+        this.fats = fats;
+    }
     public String getCode() {
         return code;
     }

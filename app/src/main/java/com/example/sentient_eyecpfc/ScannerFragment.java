@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
 
@@ -26,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.sentient_eyecpfc.Data.Product;
+import com.example.sentient_eyecpfc.Fragments.EnterProductDialog;
 import com.example.sentient_eyecpfc.Network.RetrofitFactory;
 import com.example.sentient_eyecpfc.Network.RetrofitSetup;
 import com.google.android.gms.vision.Frame;
@@ -43,9 +45,10 @@ public class ScannerFragment extends Fragment {
     public static Button mBtnFind;
     EditText mCheck;
     Product mProduct;
+    DialogFragment addProductDial;
     private static final String TAG = "Access";
     private static final int REQUEST_CODE = 1;
-
+    Bundle mBundle;
 
     @Nullable
     @Override
@@ -58,10 +61,11 @@ public class ScannerFragment extends Fragment {
         mBtnFind.setVisibility(View.INVISIBLE);
 
         mCheck = view.findViewById(R.id.check);
-
+        mBundle = new Bundle();
         btn_scan.setOnClickListener(v -> verify());
         mBtnFind.setOnClickListener(v -> {
             if (!textView.getText().toString().matches("")) {
+                mBundle.putString("code",textView.getText().toString());
                 getProduct(textView.getText().toString());
             }
         });
@@ -75,11 +79,14 @@ public class ScannerFragment extends Fragment {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(product -> {
-                    if(product.getName()!="Not Found") {
+                    if(!product.getName().equals("Not Found")) {
                         mProduct = product;
                         mCheck.setText(mProduct.getName());
                     }else{
-                        mCheck.setText("Такой товар не найден, добавьте, пожалуйста, вручную.");
+                        addProductDial = new EnterProductDialog();
+                        addProductDial.setArguments(mBundle);
+                        mCheck.setText(code);
+                        addProductDial.show(getFragmentManager(), "addProductDial");
                     }
                     },
                         error -> mCheck.setText(error.getMessage()));
