@@ -2,6 +2,7 @@ package com.example.sentient_eyecpfc.Fragments;
 
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -58,6 +59,35 @@ public class EnterProductDialog extends DialogFragment implements OnClickListene
     }
 
     public void onClick(View v) {
+        Boolean isFilled = true;
+        if(mNameTW.getText().toString().matches("")) {
+            mNameTW.setBackgroundColor(Color.parseColor("#B00020"));
+            isFilled = false;
+        }
+        if(mCaloriesTW.getText().toString().matches("")) {
+            mCaloriesTW.setBackgroundColor(Color.parseColor("#B00020"));
+            isFilled = false;
+        }
+        if(mProteinsTW.getText().toString().matches("")) {
+            mProteinsTW.setBackgroundColor(Color.parseColor("#B00020"));
+            isFilled = false;
+        }
+        if(mCarbohydratesTW.getText().toString().matches("")) {
+            mCarbohydratesTW.setBackgroundColor(Color.parseColor("#B00020"));
+            isFilled = false;
+        }
+        if(mFatsTW.getText().toString().matches("")) {
+            mFatsTW.setBackgroundColor(Color.parseColor("#B00020"));
+            isFilled = false;
+        }
+        if (!isFilled) return;
+        
+        mNameTW.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        mCaloriesTW.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        mProteinsTW.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        mCarbohydratesTW.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        mFatsTW.setBackgroundColor(Color.parseColor("#FFFFFF"));
+
         mName = mNameTW.getText().toString();
         mCalories = Double.parseDouble(mCaloriesTW.getText().toString());
         mProteins = Double.parseDouble(mProteinsTW.getText().toString());
