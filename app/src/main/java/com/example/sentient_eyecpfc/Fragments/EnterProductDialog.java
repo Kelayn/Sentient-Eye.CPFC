@@ -81,7 +81,7 @@ public class EnterProductDialog extends DialogFragment implements OnClickListene
             isFilled = false;
         }
         if (!isFilled) return;
-        
+
         mNameTW.setBackgroundColor(Color.parseColor("#FFFFFF"));
         mCaloriesTW.setBackgroundColor(Color.parseColor("#FFFFFF"));
         mProteinsTW.setBackgroundColor(Color.parseColor("#FFFFFF"));

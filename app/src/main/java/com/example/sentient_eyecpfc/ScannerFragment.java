@@ -43,7 +43,7 @@ public class ScannerFragment extends Fragment {
     public static TextView textView;
     Button btn_scan;
     public static Button mBtnFind;
-    EditText mCheck;
+    TextView mCheck;
     Product mProduct;
     DialogFragment addProductDial;
     private static final String TAG = "Access";
@@ -60,7 +60,6 @@ public class ScannerFragment extends Fragment {
         mBtnFind = view.findViewById(R.id.find_btn);
         mBtnFind.setVisibility(View.INVISIBLE);
 
-        mCheck = view.findViewById(R.id.check);
         mBundle = new Bundle();
         btn_scan.setOnClickListener(v -> verify());
         mBtnFind.setOnClickListener(v -> {
@@ -85,7 +84,6 @@ public class ScannerFragment extends Fragment {
                     }else{
                         addProductDial = new EnterProductDialog();
                         addProductDial.setArguments(mBundle);
-                        mCheck.setText(code);
                         addProductDial.show(getFragmentManager(), "addProductDial");
                     }
                     },
