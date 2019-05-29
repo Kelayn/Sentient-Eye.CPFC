@@ -94,12 +94,12 @@ public class FoodFragment extends Fragment {
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             // Заглушки для листа
-            ListViewItem.setName(cursor.getString(0));
-            ListViewItem.setCalories(cursor.getInt(0));
-            ListViewItem.setProtein(cursor.getInt(0));
-            ListViewItem.setFat(cursor.getInt(0));
-            ListViewItem.setCarboHyd(cursor.getInt(0));
-            ListViewItem.setDose(cursor.getInt(0));
+            //ListViewItem.setName(cursor.getString(0));
+            //ListViewItem.setCalories(cursor.getInt(0));
+            //ListViewItem.setProtein(cursor.getInt(0));
+            //ListViewItem.setFat(cursor.getInt(0));
+            //ListViewItem.setCarboHyd(cursor.getInt(0));
+            // ListViewItem.setDose(cursor.getInt(0));
             cursor.moveToNext();
         }
         cursor.close();
