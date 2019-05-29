@@ -8,5 +8,15 @@
     <string name="goal_gain">Calories for gaining weight</string>
     <string name="goal_lose">Calories for loosing weight</string>
     <string name="manual_enter">Add food manually</string>
+    <string name="find_btn">Scan code</string>
+    <string name="enter_product">Enter the consist</string>
+    <string name="fats">Fats</string>
+    <string name="proteins">Proteins</string>
+    <string name="carbohydrates">Carbohydrates</string>
+    <string name="calories">Calories</string>
+    <string name="name">Name</string>
+    <string name="code">Code</string>
+    <string name="send_product">Add product to database</string>
+
 
 </resources>
