@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -33,11 +34,21 @@ public class CalculatorFragment extends Fragment {
         mCBH = view.findViewById(R.id.CBHText);
         mName = view.findViewById(R.id.nameText);
         mButton = view.findViewById(R.id.button3);
-        mSwitch.setOnCheckedChangeListener((v, checked) -> toggleSwitch());
+        mSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    toggleSwitch();
+                } else {
+
+                }
+            }
+        });
         return inflater.inflate(R.layout.fragment_calculator, container, false);
     }
 
-    void toggleSwitch(){
+    public void toggleSwitch() {
         mFats.setEnabled(!mFats.isEnabled());
         mProts.setEnabled(!mProts.isEnabled());
         mCBH.setEnabled(!mCBH.isEnabled());
