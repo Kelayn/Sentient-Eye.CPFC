@@ -10,6 +10,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class OpenCameraScanActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler{
 
+    private static String tmp = null;
     ZXingScannerView ScannerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,7 @@ public class OpenCameraScanActivity extends AppCompatActivity implements ZXingSc
     @Override
     public void handleResult(Result result) {
         ScannerFragment.textView.setText(result.getText());
+        tmp = result.getText();
         onBackPressed();
     }
 
@@ -29,8 +31,13 @@ public class OpenCameraScanActivity extends AppCompatActivity implements ZXingSc
     protected void onResume() {
         super.onResume();
 
+
         ScannerView.setResultHandler(this);
         ScannerView.startCamera();
+    }
+
+    public static String getTmp () {
+        return tmp;
     }
 
     @Override
