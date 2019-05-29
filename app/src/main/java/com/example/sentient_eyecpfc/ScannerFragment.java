@@ -85,7 +85,6 @@ public class ScannerFragment extends Fragment {
         } catch (SQLException mSQLException) {
             throw mSQLException;
         }
-        //-----------------------------------
 
         mBundle = new Bundle();
         btn_scan.setOnClickListener(v -> verify());
