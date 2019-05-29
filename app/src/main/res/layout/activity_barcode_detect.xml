@@ -43,7 +43,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/find_btn"
+            android:id="@+id/find_API_btn"
             android:layout_width="142dp"
             android:layout_height="53dp"
             android:layout_marginTop="20dp"
