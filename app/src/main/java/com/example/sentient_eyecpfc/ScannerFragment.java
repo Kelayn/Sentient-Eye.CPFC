@@ -41,12 +41,7 @@ public class ScannerFragment extends Fragment {
         textView = view.findViewById(R.id.textView);
         btn_scan = view.findViewById(R.id.btn_scan);
 
-        btn_scan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                verify();
-            }
-        });
+        btn_scan.setOnClickListener(v -> verify());
 
         return view;
     }
