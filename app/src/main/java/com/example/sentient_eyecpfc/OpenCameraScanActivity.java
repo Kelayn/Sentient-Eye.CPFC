@@ -3,6 +3,7 @@ package com.example.sentient_eyecpfc;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.zxing.Result;
 
@@ -23,6 +24,7 @@ public class OpenCameraScanActivity extends AppCompatActivity implements ZXingSc
     @Override
     public void handleResult(Result result) {
         ScannerFragment.textView.setText(result.getText());
+        ScannerFragment.mBtnFind.setVisibility(View.VISIBLE);
         tmp = result.getText();
         onBackPressed();
     }
@@ -30,7 +32,6 @@ public class OpenCameraScanActivity extends AppCompatActivity implements ZXingSc
     @Override
     protected void onResume() {
         super.onResume();
-
 
         ScannerView.setResultHandler(this);
         ScannerView.startCamera();
