@@ -16,7 +16,10 @@
     <string name="calories">Calories</string>
     <string name="name">Name</string>
     <string name="code">Code</string>
-    <string name="send_product">Add product to database</string>
+    <string name="dose">Dose</string>
+    <string name="send_product">Add product to server</string>
+    <string name="save_product">Add product to collection</string>
+
 
 
 </resources>

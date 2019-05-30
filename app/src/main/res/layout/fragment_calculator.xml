@@ -118,132 +118,115 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="242dp" />
 
-    <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="395dp"
-        android:layout_height="482dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </TableLayout>
-
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/addFoodSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
+        android:layout_marginStart="124dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="117dp"
         android:text="@string/manual_enter"
-        app:layout_constraintStart_toStartOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
-    <EditText
-        android:id="@+id/nameText"
-        android:layout_width="340dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:ems="10"
-        android:enabled="false"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintBottom_toBottomOf="@+id/tableLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch1"
-        app:layout_constraintVertical_bias="0.053" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView11"
+        app:layout_constraintVertical_bias="0.0">
 
-    <EditText
-        android:id="@+id/caloriesText"
-        android:layout_width="340dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:enabled="false"
-        android:inputType="textPersonName"
-        android:text="Calories"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameText" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/protText"
-        android:layout_width="340dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:enabled="false"
-        android:inputType="textPersonName"
-        android:text="Proteins"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/caloriesText" />
+            <EditText
+                android:id="@+id/nameText"
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="@string/name"
+                android:inputType="textPersonName" />
 
-    <EditText
-        android:id="@+id/CBHText"
-        android:layout_width="340dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:enabled="false"
-        android:inputType="textPersonName"
-        android:text="Carbohydrates"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/protText" />
+            <EditText
+                android:id="@+id/protText"
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="@string/proteins"
+                android:inputType="numberSigned|numberDecimal" />
 
-    <EditText
-        android:id="@+id/fatText"
-        android:layout_width="340dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:enabled="false"
-        android:inputType="textPersonName"
-        android:text="Fats"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CBHText" />
+            <EditText
+                android:id="@+id/fatText"
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="@string/fats"
+                android:inputType="numberSigned|numberDecimal" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:enabled="false"
-        android:text="Add food"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fatText" />
+            <EditText
+                android:id="@+id/caloriesText"
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="@string/calories"
+                android:inputType="numberSigned|number|numberDecimal" />
+
+            <EditText
+                android:id="@+id/doseText"
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:editable="false"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="@string/dose"
+                android:inputType="numberSigned|number|numberDecimal" />
+
+            <EditText
+                android:id="@+id/CBHText"
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="@string/carbohydrates"
+                android:inputType="numberSigned|numberDecimal" />
+
+            <Button
+                android:id="@+id/addFoodManButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:enabled="false"
+                android:text="Add food" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
