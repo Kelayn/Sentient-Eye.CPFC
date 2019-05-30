@@ -57,15 +57,13 @@ public class ScannerFragment extends Fragment {
     private String tmp = null;
     private static final int REQUEST_CODE = 1;
     Bundle mBundle;
-    public static DatabaseHelper mDBHelper;    //Обязательные переменные
-    public static SQLiteDatabase mDb;          //Обязательные переменные
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.activity_barcode_detect, container, false);
-
         textView = view.findViewById(R.id.textView);
         mCheck = view.findViewById(R.id.textView8);
         btn_scan = view.findViewById(R.id.btn_scan);
@@ -73,18 +71,7 @@ public class ScannerFragment extends Fragment {
         mBtnFind.setVisibility(View.INVISIBLE);
         //textView.setText(OpenCameraScanActivity.getTmp());
 
-        //Обязательный блок для работы функций
-        mDBHelper = new DatabaseHelper(this.getContext());
-        try {
-            mDBHelper.updateDataBase();
-        } catch (IOException mIOException) {
-            throw new Error("UnableToUpdateDatabase");
-        }
-        try {
-            mDb = mDBHelper.getWritableDatabase();
-        } catch (SQLException mSQLException) {
-            throw mSQLException;
-        }
+
 
         mBundle = new Bundle();
         btn_scan.setOnClickListener(v -> verify());
@@ -131,40 +118,6 @@ public class ScannerFragment extends Fragment {
         this.tmp = tmp;
     }
 
-    // Функция добавления количества съеденного продуктаю На входе имя и количество
-    private void changeProduct(String Name, int value) {
-
-        ContentValues values1 = new ContentValues();
-        values1.put("dose", value);
-        mDb.update("Product", values1, "Name=?", new String[] {Name});
-
-    }
-
-    // Функция добавления продукта в бд
-    private void setProduct(String Name, int Calories, int Protein, int Fat, String Carbohydrates, int dose) {
-
-        int tmp = 0;
-
-        Cursor cursor = mDb.rawQuery("SELECT * FROM Product", null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            tmp = cursor.getInt(0);
-            cursor.moveToNext();
-        }
-        cursor.close();
-
-        ContentValues values = new ContentValues();
-        values.put("id_prod", tmp + 1);
-        values.put("Name", Name);
-        values.put("Calories", Calories);
-        values.put("Protein", Protein);
-        values.put("Fat", Fat);
-        values.put("CH", Carbohydrates);
-        values.put("dose", dose);
-        values.put("date", String.valueOf(android.text.format.DateFormat.format("dd-MM-yyyy", new java.util.Date())));
-
-        mDb.insert("Product", null, values);
-    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
