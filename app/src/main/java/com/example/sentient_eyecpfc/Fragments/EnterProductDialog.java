@@ -107,8 +107,13 @@ public class EnterProductDialog extends DialogFragment implements OnClickListene
                     Double.parseDouble(mDoseTW.getText().toString()));
             Log.e("LOGGING", log.toString());
         }
-
         sendProduct(mProduct);
+        mNameTW.setText("");
+        mCaloriesTW.setText("");
+        mProteinsTW.setText("");
+        mCarbohydratesTW.setText("");
+        mFatsTW.setText("");
+        mDoseTW.setText("");
         dismiss();
     }
 

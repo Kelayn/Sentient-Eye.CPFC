@@ -78,7 +78,13 @@ public class CalculatorFragment extends Fragment {
                     Double.parseDouble(mFats.getText().toString()), Double.parseDouble(mCBH.getText().toString()),
                     Double.parseDouble(mDose.getText().toString()));
             Log.println(4,"insert", logVar.toString());
-            toggleFields();
+            mName.setText("");
+            mCals.setText("");
+            mProts.setText("");
+            mCBH.setText("");
+            mFats.setText("");
+            mDose.setText("");
+
         });
         return view;
     }

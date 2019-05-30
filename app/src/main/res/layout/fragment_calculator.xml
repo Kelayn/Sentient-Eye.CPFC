@@ -144,55 +144,6 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/protText"
-                android:layout_width="match_parent"
-                android:layout_height="39dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:ems="10"
-                android:enabled="false"
-                android:hint="@string/proteins"
-                android:inputType="textPersonName" />
-
-            <EditText
-                android:id="@+id/fatText"
-                android:layout_width="match_parent"
-                android:layout_height="39dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:ems="10"
-                android:enabled="false"
-                android:hint="@string/fats"
-                android:inputType="textPersonName" />
-
-            <EditText
-                android:id="@+id/caloriesText"
-                android:layout_width="match_parent"
-                android:layout_height="39dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:ems="10"
-                android:enabled="false"
-                android:hint="@string/calories"
-                android:inputType="textPersonName" />
-
-            <EditText
-                android:id="@+id/doseText"
-                android:layout_width="match_parent"
-                android:layout_height="39dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:editable="false"
-                android:ems="10"
-                android:enabled="false"
-                android:hint="@string/dose"
-                android:inputType="textPersonName" />
-
-            <EditText
                 android:id="@+id/nameText"
                 android:layout_width="match_parent"
                 android:layout_height="39dp"
@@ -205,6 +156,55 @@
                 android:inputType="textPersonName" />
 
             <EditText
+                android:id="@+id/protText"
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="@string/proteins"
+                android:inputType="numberSigned|numberDecimal" />
+
+            <EditText
+                android:id="@+id/fatText"
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="@string/fats"
+                android:inputType="numberSigned|numberDecimal" />
+
+            <EditText
+                android:id="@+id/caloriesText"
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="@string/calories"
+                android:inputType="numberSigned|number|numberDecimal" />
+
+            <EditText
+                android:id="@+id/doseText"
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:editable="false"
+                android:ems="10"
+                android:enabled="false"
+                android:hint="@string/dose"
+                android:inputType="numberSigned|number|numberDecimal" />
+
+            <EditText
                 android:id="@+id/CBHText"
                 android:layout_width="match_parent"
                 android:layout_height="39dp"
@@ -214,7 +214,7 @@
                 android:ems="10"
                 android:enabled="false"
                 android:hint="@string/carbohydrates"
-                android:inputType="textPersonName" />
+                android:inputType="numberSigned|numberDecimal" />
 
             <Button
                 android:id="@+id/addFoodManButton"
