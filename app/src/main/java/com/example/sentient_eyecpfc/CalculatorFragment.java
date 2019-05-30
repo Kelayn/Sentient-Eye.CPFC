@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.example.sentient_eyecpfc.Database.DatabaseUsage;
 
 public class CalculatorFragment extends Fragment {
-    private Button mAddButton;
+    private Button mAddSwitch;
     private Button mAddFoodManButton;
     private TextView mFats;
     private TextView mProts;
@@ -32,7 +32,7 @@ public class CalculatorFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_calculator, container, false);
         DatabaseUsage dbUse = new DatabaseUsage(this.getContext());
-        mAddButton = view.findViewById(R.id.addFoodBtn);
+        mAddSwitch = view.findViewById(R.id.addFoodSwitch);
         mCals = view.findViewById(R.id.caloriesText);
         mFats = view.findViewById(R.id.fatText);
         mProts = view.findViewById(R.id.protText);
@@ -40,8 +40,7 @@ public class CalculatorFragment extends Fragment {
         mName = view.findViewById(R.id.nameText);
         mDose = view.findViewById(R.id.doseText);
         mAddFoodManButton = view.findViewById(R.id.addFoodManButton);
-        mAddButton.setOnClickListener(v -> {
-            mAddButton.setText("ТЫ НАЖАЛ МЕНЯ");
+        mAddSwitch.setOnClickListener(v -> {
             toggleFields();
         });
         mAddFoodManButton.setOnClickListener(v -> {
@@ -81,7 +80,7 @@ public class CalculatorFragment extends Fragment {
             Log.println(4,"insert", logVar.toString());
             toggleFields();
         });
-        return inflater.inflate(R.layout.fragment_calculator, container, false);
+        return view;
     }
 
     public void toggleFields() {

@@ -54,7 +54,6 @@ public class ScannerFragment extends Fragment {
     Product mProduct;
     DialogFragment addProductDial;
     private static final String TAG = "Access";
-    private String tmp = null;
     private static final int REQUEST_CODE = 1;
     Bundle mBundle;
 
@@ -69,7 +68,6 @@ public class ScannerFragment extends Fragment {
         btn_scan = view.findViewById(R.id.btn_scan);
         mBtnFind = view.findViewById(R.id.find_API_btn);
         mBtnFind.setVisibility(View.INVISIBLE);
-        //textView.setText(OpenCameraScanActivity.getTmp());
 
 
 
@@ -112,10 +110,6 @@ public class ScannerFragment extends Fragment {
         } else {
             requestPermissions(permission, REQUEST_CODE);
         }
-    }
-
-    public void setTmp(String tmp) {
-        this.tmp = tmp;
     }
 
 
