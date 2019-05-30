@@ -90,5 +90,6 @@ public class CalculatorFragment extends Fragment {
         mCals.setEnabled(!mCals.isEnabled());
         mName.setEnabled(!mName.isEnabled());
         mAddFoodManButton.setEnabled(!mAddFoodManButton.isEnabled());
+        mDose.setEnabled(!mDose.isEnabled());
     }
 }
