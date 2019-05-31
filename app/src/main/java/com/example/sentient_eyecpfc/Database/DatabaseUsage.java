@@ -156,8 +156,6 @@ public class DatabaseUsage {
 
     public static ArrayList<DBProduct> setList(ArrayList<DBProduct> prod, Context context) {
         try {
-            DatabaseHelper mDBHelper;
-            SQLiteDatabase mDb;
             mDBHelper = new DatabaseHelper(context);
             try {
                 mDBHelper.updateDataBase();

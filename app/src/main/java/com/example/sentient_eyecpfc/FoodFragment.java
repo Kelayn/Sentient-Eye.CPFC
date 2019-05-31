@@ -13,30 +13,23 @@ import android.view.ViewGroup;
 
 import com.example.sentient_eyecpfc.Adapters.DBProductListAdapter;
 import com.example.sentient_eyecpfc.Data.DBProduct;
+import com.example.sentient_eyecpfc.Database.DatabaseUsage;
 
 import java.util.ArrayList;
 import java.util.List;
 
 //TODO maybe make lv clickable with full info;
 public class FoodFragment extends Fragment {
-    List<DBProduct> mProducts  = new ArrayList<>();
+    ArrayList<DBProduct> mProducts  = new ArrayList<>();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_food, container, false);
-        DBProduct pr = new DBProduct("12.01.01", 100.0,"123456789012", "Семушка тестовый", 100.0,
-                100.0, 100.0, 100.0);
-        DBProduct pr1 = new DBProduct("12.01.01", 100.0,"123456789012", "Семушка тестовый", 100.0,
-                100.0, 100.0, 100.0);
-        DBProduct pr2 = new DBProduct("12.01.01", 100.0,"123456789012", "Семушка тестовый", 100.0,
-                100.0, 100.0, 100.0);
-        mProducts.add(pr);
-        mProducts.add(pr1);
-        mProducts.add(pr2);
+        DatabaseUsage dBUs = new DatabaseUsage(getContext());
         RecyclerView recyclerView = view.findViewById(R.id.productRec);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        DBProductListAdapter adapter = new DBProductListAdapter(this.getContext(), mProducts);
+        DBProductListAdapter adapter = new DBProductListAdapter(this.getContext(), dBUs.setList(mProducts, getContext()));
         recyclerView.setAdapter(adapter);
         return view;
     }

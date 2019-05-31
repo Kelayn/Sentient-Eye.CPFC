@@ -35,6 +35,7 @@ public class CalculatorFragment extends Fragment {
     private TextView Keep;
 
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -53,6 +54,9 @@ public class CalculatorFragment extends Fragment {
         mDose = view.findViewById(R.id.doseText);
         mAddFoodManButton = view.findViewById(R.id.addFoodManButton);
         calcLoader();
+        mAddSwitch.setOnClickListener(v -> {
+            toggleFields();
+        });
         mAddFoodManButton.setOnClickListener(v -> {
 
             Boolean isFilled = true;
@@ -97,6 +101,8 @@ public class CalculatorFragment extends Fragment {
             mDose.setText("");
 
         });
+
+
 
         return view;
     }
@@ -165,14 +171,14 @@ public class CalculatorFragment extends Fragment {
         } else {
             if (Gender.equals("1")) {
                 Result = (10*Weight + 6.25*Height - 5*Age + 5)*A;
-                Keep.setText(String.valueOf(Math.round(Result)));
-                Gain.setText(String.valueOf(Math.round(Result) + 311));
-                Loose.setText(String.valueOf(Math.round(Result) - 322));
+                Keep.setText(String.valueOf(Result));
+                Gain.setText(String.valueOf(Result + 311));
+                Loose.setText(String.valueOf(Result - 322));
             } else {
                 Result = (10*Weight + 6.25*Height - 5*Age - 161)*A;
-                Keep.setText(String.valueOf(Math.round(Result)));
-                Gain.setText(String.valueOf(Math.round(Result) + 311));
-                Loose.setText(String.valueOf(Math.round(Result) - 322));
+                Keep.setText(String.valueOf(Result));
+                Gain.setText(String.valueOf(Result + 311));
+                Loose.setText(String.valueOf(Result - 322));
             }
         }
     }
