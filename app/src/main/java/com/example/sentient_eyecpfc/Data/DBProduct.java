@@ -3,19 +3,17 @@ package com.example.sentient_eyecpfc.Data;
 import java.util.Date;
 //TODO change String mDate to Date mDate;
 public class DBProduct extends Product {
-    private String mDate;
+    private Date mDate;
     private Double mDose;
-    public DBProduct(String date, Double dose, String code, String name, Double calories, Double proteins, Double carbohydrates, Double fats) {
+    public DBProduct(Date date, Double dose, String code, String name, Double calories, Double proteins, Double carbohydrates, Double fats) {
         super(code,name,calories,proteins,carbohydrates,fats);
         this.mDate = date;
         this.mDose = dose;
     }
 
-    public String getmDate() {
-        return mDate;
-    }
+    public Date getmDate() { return mDate; }
 
-    public void setmDate(String mDate) {
+    public void setmDate(Date mDate) {
         this.mDate = mDate;
     }
 

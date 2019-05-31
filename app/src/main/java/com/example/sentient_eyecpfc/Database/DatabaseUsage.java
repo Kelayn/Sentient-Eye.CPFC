@@ -6,8 +6,13 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 
+import com.example.sentient_eyecpfc.Data.DBProduct;
 import com.example.sentient_eyecpfc.DatabaseHelper;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class DatabaseUsage {
     public static DatabaseHelper mDBHelper;    //Обязательные переменные
@@ -147,6 +152,39 @@ public class DatabaseUsage {
             cursor.moveToNext();
         }
         cursor.close();
+    }
+
+    public static ArrayList<DBProduct> setList(ArrayList<DBProduct> prod, Context context) {
+        try {
+            DatabaseHelper mDBHelper;
+            SQLiteDatabase mDb;
+            mDBHelper = new DatabaseHelper(context);
+            try {
+                mDBHelper.updateDataBase();
+            } catch (IOException mIOException) {
+                throw new Error("UnableToUpdateDatabase");
+            }
+
+            try {
+                mDb = mDBHelper.getWritableDatabase();
+            } catch (SQLException mSQLException) {
+                throw mSQLException;
+            }
+            DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+            Cursor cursor1 = mDb.rawQuery("SELECT * FROM Product", null);
+            cursor1.moveToFirst();
+            while (!cursor1.isAfterLast()) {
+                DBProduct product = new DBProduct(formatter.parse(cursor1.getString(7)), cursor1.getDouble(6),
+                        cursor1.getString(7), cursor1.getString(1), cursor1.getDouble(2),
+                        cursor1.getDouble(3), cursor1.getDouble(5), cursor1.getDouble(4));
+                prod.add(product);
+                cursor1.moveToNext();
+            }
+            cursor1.close();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return prod;
     }
 
 }
