@@ -19,6 +19,7 @@
     <string name="dose">Dose</string>
     <string name="send_product">Add product to server</string>
     <string name="save_product">Add product to collection</string>
+    <string name="food_fragment">List of eaten products</string>
 
 
 
