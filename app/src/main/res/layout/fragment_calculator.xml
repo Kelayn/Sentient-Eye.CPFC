@@ -39,7 +39,7 @@
             android:text="@string/goal_gain" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/textFormGain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="" />
@@ -65,7 +65,7 @@
             android:text="@string/goal_keep" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/textFormKeep"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="" />
@@ -90,7 +90,7 @@
             android:text="@string/goal_lose" />
 
         <TextView
-            android:id="@+id/textView16"
+            android:id="@+id/textFormLoose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

@@ -18,6 +18,11 @@ import java.io.IOException;
 public class ProfileFragment extends Fragment {
     public static DatabaseHelper mDBHelper;
     public static SQLiteDatabase mDb;
+    String Plan = "";
+    String Gender = "";
+    int Weight = 0;
+    int Height = 0;
+    int Age = 0;
 
     @Nullable
     @Override
@@ -55,14 +60,19 @@ public class ProfileFragment extends Fragment {
             textFat.setText("Fat: " + cursor.getString(3));
             textCH.setText("Carbohydrates: " + cursor.getString(4));
             textTarget.setText("Target: " + cursor.getString(5));
-            textTraining.setText("Fitness plan: " + cursor.getString(6));
-            textAge.setText("Age: " + cursor.getString(7));
-            if (cursor.getString(8).equals("1"))
+            Plan = cursor.getString(6);
+            textTraining.setText("Fitness plan: " + Plan);
+            Age = cursor.getInt(7);
+            textAge.setText("Age: " + String.valueOf(Age));
+            Gender = cursor.getString(8);
+            if (Gender.equals("1"))
                 textGender.setText("Gender: " + "Male");
             else
                 textGender.setText("Gender: " + "Female");
-            textWeight.setText("Weight: " + cursor.getString(9));
-            textHeight.setText("Height: " + cursor.getString(10));
+            Weight = cursor.getInt(9);
+            textWeight.setText("Weight: " + String.valueOf(Weight));
+            Height = cursor.getInt(10);
+            textHeight.setText("Height: " + String.valueOf(Height));
             cursor.moveToNext();
         }
         cursor.close();
