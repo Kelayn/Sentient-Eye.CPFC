@@ -3,11 +3,17 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="@android:color/holo_blue_light">
+    android:background="#DFDFDF" >
+
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/food_fragment">
+        android:paddingBottom="40px"
+        android:text="@string/food_fragment"
+        android:textSize="9pt"
+        android:textColor="@color/colorBlack"
+        android:textAlignment="center">
+
     </TextView>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/productRec"

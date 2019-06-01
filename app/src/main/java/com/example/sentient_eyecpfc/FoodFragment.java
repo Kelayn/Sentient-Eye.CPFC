@@ -3,7 +3,9 @@ package com.example.sentient_eyecpfc;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.solver.widgets.ConstraintWidget;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,6 +32,8 @@ public class FoodFragment extends Fragment {
         mProducts = dBUs.setList(getContext());
         RecyclerView recyclerView = view.findViewById(R.id.productRec);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        DividerItemDecoration decoration = new DividerItemDecoration(this.getContext(), ConstraintWidget.VERTICAL);
+        recyclerView.addItemDecoration(decoration);
         DBProductListAdapter adapter = new DBProductListAdapter(this.getContext(), mProducts);
         recyclerView.setAdapter(adapter);
         return view;

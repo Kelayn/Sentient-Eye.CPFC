@@ -8,7 +8,8 @@
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
     android:paddingRight="16dp"
-    tools:context=".ScannerFragment">
+    tools:context=".ScannerFragment"
+    android:background="#DFDFDF" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -24,7 +25,8 @@
             android:text="Scan"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:background = "@drawable/roundedbutton"/>
 
         <TextView
             android:id="@+id/textView"
@@ -51,7 +53,8 @@
             android:text="@string/find_btn"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:background = "@drawable/roundedbutton"/>
 
         <TextView
             android:id="@+id/textFormGain"
