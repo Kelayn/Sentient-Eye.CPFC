@@ -1,8 +1,6 @@
-package com.example.sentient_eyecpfc;
+package com.example.sentient_eyecpfc.Fragments;
 
 import android.database.Cursor;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -18,8 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sentient_eyecpfc.Database.DatabaseUsage;
-
-import java.io.IOException;
+import com.example.sentient_eyecpfc.Activities.MainActivity;
+import com.example.sentient_eyecpfc.R;
 
 public class CalculatorFragment extends Fragment {
     private Button mAddSwitch;

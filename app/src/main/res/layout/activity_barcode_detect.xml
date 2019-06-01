@@ -8,7 +8,7 @@
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
     android:paddingRight="16dp"
-    tools:context=".ScannerFragment"
+    tools:context=".Fragments.ScannerFragment"
     android:background="#DFDFDF" >
 
     <androidx.constraintlayout.widget.ConstraintLayout

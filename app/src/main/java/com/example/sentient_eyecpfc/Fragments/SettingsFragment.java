@@ -1,4 +1,4 @@
-package com.example.sentient_eyecpfc;
+package com.example.sentient_eyecpfc.Fragments;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -17,6 +17,9 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.sentient_eyecpfc.Database.DatabaseUsage;
+import com.example.sentient_eyecpfc.Database.DatabaseHelper;
+import com.example.sentient_eyecpfc.Activities.MainActivity;
+import com.example.sentient_eyecpfc.R;
 
 import java.io.IOException;
 

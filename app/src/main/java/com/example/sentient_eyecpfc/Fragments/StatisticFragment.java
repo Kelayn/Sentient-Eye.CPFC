@@ -1,4 +1,4 @@
-package com.example.sentient_eyecpfc;
+package com.example.sentient_eyecpfc.Fragments;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.example.sentient_eyecpfc.Data.DBProduct;
 import com.example.sentient_eyecpfc.Database.DatabaseUsage;
+import com.example.sentient_eyecpfc.R;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.series.BarGraphSeries;

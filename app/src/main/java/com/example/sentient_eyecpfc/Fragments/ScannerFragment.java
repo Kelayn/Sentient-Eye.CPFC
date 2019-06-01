@@ -1,4 +1,4 @@
-package com.example.sentient_eyecpfc;
+package com.example.sentient_eyecpfc.Fragments;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -21,10 +21,10 @@ import android.widget.TextView;
 
 import com.example.sentient_eyecpfc.Data.Product;
 import com.example.sentient_eyecpfc.Database.DatabaseUsage;
-import com.example.sentient_eyecpfc.Fragments.AddProductToDB;
-import com.example.sentient_eyecpfc.Fragments.EnterProductDialog;
 import com.example.sentient_eyecpfc.Network.RetrofitFactory;
 import com.example.sentient_eyecpfc.Network.RetrofitSetup;
+import com.example.sentient_eyecpfc.Activities.OpenCameraScanActivity;
+import com.example.sentient_eyecpfc.R;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;

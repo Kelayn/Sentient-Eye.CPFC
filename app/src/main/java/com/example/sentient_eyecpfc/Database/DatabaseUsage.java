@@ -11,8 +11,7 @@ import android.widget.Toast;
 
 
 import com.example.sentient_eyecpfc.Data.DBProduct;
-import com.example.sentient_eyecpfc.DatabaseHelper;
-import com.example.sentient_eyecpfc.MainActivity;
+import com.example.sentient_eyecpfc.Activities.MainActivity;
 
 import java.io.IOException;
 import java.text.DateFormat;

@@ -1,8 +1,17 @@
-package com.example.sentient_eyecpfc;
+package com.example.sentient_eyecpfc.Activities;
 
 import androidx.annotation.NonNull;
 
+import com.example.sentient_eyecpfc.Database.DatabaseHelper;
 import com.example.sentient_eyecpfc.Database.DatabaseUsage;
+import com.example.sentient_eyecpfc.Fragments.CalculatorFragment;
+import com.example.sentient_eyecpfc.Fragments.FitnessPlanFragment;
+import com.example.sentient_eyecpfc.Fragments.FoodFragment;
+import com.example.sentient_eyecpfc.Fragments.ProfileFragment;
+import com.example.sentient_eyecpfc.Fragments.ScannerFragment;
+import com.example.sentient_eyecpfc.Fragments.SettingsFragment;
+import com.example.sentient_eyecpfc.Fragments.StatisticFragment;
+import com.example.sentient_eyecpfc.R;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;

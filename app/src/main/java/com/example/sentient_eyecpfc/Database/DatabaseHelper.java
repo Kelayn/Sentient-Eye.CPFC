@@ -1,4 +1,4 @@
-package com.example.sentient_eyecpfc;
+package com.example.sentient_eyecpfc.Database;
 
 import android.content.Context;
 import android.database.SQLException;

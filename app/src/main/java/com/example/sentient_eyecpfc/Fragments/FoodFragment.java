@@ -1,4 +1,4 @@
-package com.example.sentient_eyecpfc;
+package com.example.sentient_eyecpfc.Fragments;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.example.sentient_eyecpfc.Adapters.DBProductListAdapter;
 import com.example.sentient_eyecpfc.Data.DBProduct;
 import com.example.sentient_eyecpfc.Database.DatabaseUsage;
+import com.example.sentient_eyecpfc.R;
 
 import java.util.ArrayList;
 import java.util.List;

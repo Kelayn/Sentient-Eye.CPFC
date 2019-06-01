@@ -1,10 +1,11 @@
-package com.example.sentient_eyecpfc;
+package com.example.sentient_eyecpfc.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.sentient_eyecpfc.Fragments.ScannerFragment;
 import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
