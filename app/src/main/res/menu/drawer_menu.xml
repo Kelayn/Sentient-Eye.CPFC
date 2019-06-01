@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_profile"
+            android:title="Profile" />
+        <item android:id="@+id/nav_statistic"
+            android:icon="@drawable/ic_statistic"
+            android:title="Statistic" />
+        <item android:id="@+id/nav_scanner"
+            android:icon="@drawable/ic_scan"
+            android:title="Scanner" />
+        <item android:id="@+id/nav_food"
+            android:icon="@drawable/ic_food"
+            android:title="Food" />
+        <item android:id="@+id/nav_plan_fitnes"
+            android:icon="@drawable/ic_plan_fitness"
+            android:title="Fitness plan" />
+        <item android:id="@+id/nav_calculator"
+            android:icon="@drawable/ic_calculator"
+            android:title="Calculator" />
+        <item android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings"
+            android:title="Settings" />
+    </group>
+</menu>
