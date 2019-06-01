@@ -2,46 +2,28 @@ package com.example.sentient_eyecpfc;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Path;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.MutableLiveData;
 
 import android.util.Log;
-import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.sentient_eyecpfc.Data.Product;
+import com.example.sentient_eyecpfc.Database.DatabaseUsage;
 import com.example.sentient_eyecpfc.Fragments.EnterProductDialog;
 import com.example.sentient_eyecpfc.Network.RetrofitFactory;
 import com.example.sentient_eyecpfc.Network.RetrofitSetup;
-import com.google.android.gms.vision.Frame;
-import com.google.android.gms.vision.barcode.Barcode;
-import com.google.android.gms.vision.barcode.BarcodeDetector;
-
-import java.io.IOException;
-import java.util.Objects;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -64,12 +46,10 @@ public class ScannerFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.activity_barcode_detect, container, false);
         textView = view.findViewById(R.id.textView);
-        mCheck = view.findViewById(R.id.textView8);
+        mCheck = view.findViewById(R.id.textFormGain);
         btn_scan = view.findViewById(R.id.btn_scan);
         mBtnFind = view.findViewById(R.id.find_API_btn);
         mBtnFind.setVisibility(View.INVISIBLE);
-
-
 
         mBundle = new Bundle();
         btn_scan.setOnClickListener(v -> verify());
@@ -84,18 +64,22 @@ public class ScannerFragment extends Fragment {
 
     @SuppressLint("CheckResult")
     private void getProduct(String code) {
+
         RetrofitFactory.getRetrofit().create(RetrofitSetup.class)
                 .getProductByCode(code)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(product -> {
+                    DatabaseUsage dBUs = new DatabaseUsage(getContext());
                     if(!product.getName().equals("Not Found")) {
                         mProduct = product;
                         mCheck.setText(mProduct.getName());
+                        dBUs.updateKBJUinProfile(getContext());
                     }else{
                         addProductDial = new EnterProductDialog();
                         addProductDial.setArguments(mBundle);
                         addProductDial.show(getFragmentManager(), "addProductDial");
+                        dBUs.updateKBJUinProfile(getContext());
                     }
                     },
                         error -> mCheck.setText(error.getMessage()));
