@@ -1,6 +1,8 @@
 package com.example.sentient_eyecpfc;
 
 import androidx.annotation.NonNull;
+
+import com.example.sentient_eyecpfc.Database.DatabaseUsage;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -48,6 +50,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             } catch (SQLException mSQLException) {
                 throw mSQLException;
             }
+
+            DatabaseUsage dBUs = new DatabaseUsage(getApplicationContext());
+            dBUs.updateKBJUinProfile(getApplicationContext());
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new ProfileFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_profile);

@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.sentient_eyecpfc.Data.Product;
+import com.example.sentient_eyecpfc.Database.DatabaseUsage;
 import com.example.sentient_eyecpfc.Fragments.EnterProductDialog;
 import com.example.sentient_eyecpfc.Network.RetrofitFactory;
 import com.example.sentient_eyecpfc.Network.RetrofitSetup;
@@ -50,8 +51,6 @@ public class ScannerFragment extends Fragment {
         mBtnFind = view.findViewById(R.id.find_API_btn);
         mBtnFind.setVisibility(View.INVISIBLE);
 
-
-
         mBundle = new Bundle();
         btn_scan.setOnClickListener(v -> verify());
         mBtnFind.setOnClickListener(v -> {
@@ -65,18 +64,22 @@ public class ScannerFragment extends Fragment {
 
     @SuppressLint("CheckResult")
     private void getProduct(String code) {
+
         RetrofitFactory.getRetrofit().create(RetrofitSetup.class)
                 .getProductByCode(code)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(product -> {
+                    DatabaseUsage dBUs = new DatabaseUsage(getContext());
                     if(!product.getName().equals("Not Found")) {
                         mProduct = product;
                         mCheck.setText(mProduct.getName());
+                        dBUs.updateKBJUinProfile(getContext());
                     }else{
                         addProductDial = new EnterProductDialog();
                         addProductDial.setArguments(mBundle);
                         addProductDial.show(getFragmentManager(), "addProductDial");
+                        dBUs.updateKBJUinProfile(getContext());
                     }
                     },
                         error -> mCheck.setText(error.getMessage()));

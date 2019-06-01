@@ -93,6 +93,8 @@ public class CalculatorFragment extends Fragment {
                     Double.parseDouble(mDose.getText().toString()));
             Log.println(4,"insert", logVar.toString());
 
+            DatabaseUsage dBUs = new DatabaseUsage(getContext());
+            dBUs.updateKBJUinProfile(getContext());
             mName.setText("");
             mCals.setText("");
             mProts.setText("");
@@ -101,8 +103,6 @@ public class CalculatorFragment extends Fragment {
             mDose.setText("");
 
         });
-
-
 
         return view;
     }
@@ -171,14 +171,14 @@ public class CalculatorFragment extends Fragment {
         } else {
             if (Gender.equals("1")) {
                 Result = (10*Weight + 6.25*Height - 5*Age + 5)*A;
-                Keep.setText(String.valueOf(Result));
-                Gain.setText(String.valueOf(Result + 311));
-                Loose.setText(String.valueOf(Result - 322));
+                Keep.setText(String.valueOf(Math.round(Result)));
+                Gain.setText(String.valueOf(Math.round(Result) + 311));
+                Loose.setText(String.valueOf(Math.round(Result) - 322));
             } else {
                 Result = (10*Weight + 6.25*Height - 5*Age - 161)*A;
-                Keep.setText(String.valueOf(Result));
-                Gain.setText(String.valueOf(Result + 311));
-                Loose.setText(String.valueOf(Result - 322));
+                Keep.setText(String.valueOf(Math.round(Result)));
+                Gain.setText(String.valueOf(Math.round(Result) + 311));
+                Loose.setText(String.valueOf(Math.round(Result) - 322));
             }
         }
     }

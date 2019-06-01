@@ -27,9 +27,10 @@ public class FoodFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_food, container, false);
         DatabaseUsage dBUs = new DatabaseUsage(getContext());
+        mProducts = dBUs.setList(getContext());
         RecyclerView recyclerView = view.findViewById(R.id.productRec);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        DBProductListAdapter adapter = new DBProductListAdapter(this.getContext(), dBUs.setList(mProducts, getContext()));
+        DBProductListAdapter adapter = new DBProductListAdapter(this.getContext(), mProducts);
         recyclerView.setAdapter(adapter);
         return view;
     }

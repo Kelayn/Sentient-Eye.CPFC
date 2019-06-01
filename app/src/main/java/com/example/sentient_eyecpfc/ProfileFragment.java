@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sentient_eyecpfc.Database.DatabaseUsage;
+
 import java.io.IOException;
 
 public class ProfileFragment extends Fragment {
@@ -23,6 +25,10 @@ public class ProfileFragment extends Fragment {
     int Weight = 0;
     int Height = 0;
     int Age = 0;
+    double Calories = 0;
+    double Prot = 0;
+    double Fat = 0;
+    double CH = 0;
 
     @Nullable
     @Override
@@ -40,25 +46,18 @@ public class ProfileFragment extends Fragment {
         TextView textWeight = view.findViewById(R.id.rexrWeight);
         TextView textHeight = view.findViewById(R.id.textHeight);
 
-        mDBHelper = new DatabaseHelper(this.getContext());
-        try {
-            mDBHelper.updateDataBase();
-        } catch (IOException mIOException) {
-            throw new Error("UnableToUpdateDatabase");
-        }
-        try {
-            mDb = mDBHelper.getWritableDatabase();
-        } catch (SQLException mSQLException) {
-            throw mSQLException;
-        }
-
-        Cursor cursor = MainActivity.mDb.rawQuery("SELECT * FROM User", null);
+        DatabaseUsage dBUs = new DatabaseUsage(getContext());
+        Cursor cursor = dBUs.mDb.rawQuery("SELECT * FROM User", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            textCalories.setText("Calories: " + cursor.getString(1));
-            textProt.setText("Protein: " + cursor.getString(2));
-            textFat.setText("Fat: " + cursor.getString(3));
-            textCH.setText("Carbohydrates: " + cursor.getString(4));
+            Calories = cursor.getDouble(1);
+            textCalories.setText("Calories: " + Math.round(Calories));
+            Prot = cursor.getDouble(2);
+            textProt.setText("Protein: " + Math.round(Prot));
+            Fat = cursor.getDouble(3);
+            textFat.setText("Fat: " + Math.round(Fat));
+            CH = cursor.getDouble(4);
+            textCH.setText("Carbohydrates: " + Math.round(CH));
             textTarget.setText("Target: " + cursor.getString(5));
             Plan = cursor.getString(6);
             textTraining.setText("Fitness plan: " + Plan);
@@ -76,8 +75,6 @@ public class ProfileFragment extends Fragment {
             cursor.moveToNext();
         }
         cursor.close();
-        Toast toast2 = Toast.makeText(getContext(),"...", Toast.LENGTH_SHORT);
-        toast2.show();
 
         return view;
     }
