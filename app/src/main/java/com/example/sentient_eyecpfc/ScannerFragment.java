@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.example.sentient_eyecpfc.Data.Product;
 import com.example.sentient_eyecpfc.Database.DatabaseUsage;
+import com.example.sentient_eyecpfc.Fragments.AddProductToDB;
 import com.example.sentient_eyecpfc.Fragments.EnterProductDialog;
 import com.example.sentient_eyecpfc.Network.RetrofitFactory;
 import com.example.sentient_eyecpfc.Network.RetrofitSetup;
@@ -74,12 +75,19 @@ public class ScannerFragment extends Fragment {
                     if(!product.getName().equals("Not Found")) {
                         mProduct = product;
                         mCheck.setText(mProduct.getName());
-                        dBUs.updateKBJUinProfile(getContext());
+                        mBundle.putString("name", mProduct.getName());
+                        mBundle.putString("cals", mProduct.getCalories().toString());
+                        mBundle.putString("fats", mProduct.getFats().toString());
+                        mBundle.putString("prots", mProduct.getProteins().toString());
+                        mBundle.putString("CBH", mProduct.getCarbohydrates().toString());
+                        addProductDial = new AddProductToDB();
+                        addProductDial.setArguments(mBundle);
+                        addProductDial.show(getFragmentManager(), "addProductDial");
+
                     }else{
                         addProductDial = new EnterProductDialog();
                         addProductDial.setArguments(mBundle);
                         addProductDial.show(getFragmentManager(), "addProductDial");
-                        dBUs.updateKBJUinProfile(getContext());
                     }
                     },
                         error -> mCheck.setText(error.getMessage()));

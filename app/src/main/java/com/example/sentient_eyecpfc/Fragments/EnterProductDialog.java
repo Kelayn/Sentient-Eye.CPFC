@@ -60,6 +60,7 @@ public class EnterProductDialog extends DialogFragment implements OnClickListene
 
     public void onClick(View v) {
         Boolean isFilled = true;
+        DatabaseUsage dBUs = new DatabaseUsage(getContext());
         if(mNameTW.getText().toString().matches("")) {
             mNameTW.setBackgroundColor(Color.parseColor("#B00020"));
             isFilled = false;
@@ -91,6 +92,7 @@ public class EnterProductDialog extends DialogFragment implements OnClickListene
         mProteinsTW.setBackgroundColor(Color.parseColor("#FFFFFF"));
         mCarbohydratesTW.setBackgroundColor(Color.parseColor("#FFFFFF"));
         mFatsTW.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        mDoseTW.setBackgroundColor(Color.parseColor("#FFFFFF"));
 
         mName = mNameTW.getText().toString();
         mCalories = Double.parseDouble(mCaloriesTW.getText().toString());
@@ -114,6 +116,7 @@ public class EnterProductDialog extends DialogFragment implements OnClickListene
         mCarbohydratesTW.setText("");
         mFatsTW.setText("");
         mDoseTW.setText("");
+        dBUs.updateKBJUinProfile(getContext());
         dismiss();
     }
 
