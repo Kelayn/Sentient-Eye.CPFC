@@ -105,11 +105,18 @@ public class DatabaseUsage {
             total3 = cursor3.getInt(cursor3.getColumnIndex("Total"));
         }
 
+        int total4 = 0;
+        Cursor cursor4 = MainActivity.mDb.rawQuery("SELECT SUM(" + "dose" + ") as Total FROM " + "Product WHERE date = '" +
+                android.text.format.DateFormat.format("dd-MM-yyyy", new java.util.Date()) + "'", null);
+        if (cursor4.moveToFirst()) {
+
+            total4 = cursor4.getInt(cursor4.getColumnIndex("Total"));
+        }
+
         ContentValues values1 = new ContentValues();
-        values1.put("Calories", total);
-        values1.put("Prot", total1);
-        values1.put("Fat", total2);
-        values1.put("CH", total3);
+        values1.put("Calories", total * (total4/100.0));
+         values1.put("Fat", total2 * (total4/100.0));
+        values1.put("CH", total3 * (total4/100.0));
         MainActivity.mDb.update("User", values1, "id=?", new String[] { String.valueOf(1)});
     }
 
