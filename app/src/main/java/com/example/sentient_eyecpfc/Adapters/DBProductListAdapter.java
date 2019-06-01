@@ -31,9 +31,9 @@ public class DBProductListAdapter  extends RecyclerView.Adapter<DBProductListAda
     @Override
     public void onBindViewHolder(DBProductListAdapter.ViewHolder holder, int position) {
         DBProduct product = mProducts.get(position);
-        holder.dateTv.setText("Date of consuming: " + product.getName());
+        holder.dateTv.setText("Date of consuming: " + product.getCode());
         holder.doseTv.setText("Amount of product (gr): " + product.getmDose().toString());
-        holder.nameTv.setText("The name of the product" + product.getName());
+        holder.nameTv.setText("\nThe name of the product "  + product.getName());
     }
 
     @Override
