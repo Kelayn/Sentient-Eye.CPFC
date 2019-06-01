@@ -113,10 +113,19 @@ public class DatabaseUsage {
             total4 = cursor4.getInt(cursor4.getColumnIndex("Total"));
         }
 
+        int total5 = 0;
+        Cursor cursor5 = mDb.rawQuery("SELECT * FROM Product WHERE date = '" + android.text.format.DateFormat.format("dd-MM-yyyy", new java.util.Date()) + "'", null);
+        cursor5.moveToFirst();
+        while (!cursor5.isAfterLast()) {
+            total5 = cursor5.getInt(0);
+            cursor5.moveToNext();
+        }
+        cursor5.close();
+
         ContentValues values1 = new ContentValues();
-        values1.put("Calories", total * (total4/100.0));
-         values1.put("Fat", total2 * (total4/100.0));
-        values1.put("CH", total3 * (total4/100.0));
+        values1.put("Calories", (total * (total4/100.0))/total5);
+        values1.put("Fat", (total2 * (total4/100.0))/total5);
+        values1.put("CH", (total3 * (total4/100.0))/total5);
         MainActivity.mDb.update("User", values1, "id=?", new String[] { String.valueOf(1)});
     }
 
@@ -167,7 +176,7 @@ public class DatabaseUsage {
 
     @TargetApi(Build.VERSION_CODES.N)
     public static ArrayList<Double> setData(Context context) {
-        ArrayList<Double> prod1 = null;
+        ArrayList<Double> prod1 = new ArrayList<>();
         try {
             DatabaseHelper mDBHelper;
             SQLiteDatabase mDb;
@@ -183,19 +192,34 @@ public class DatabaseUsage {
             } catch (SQLException mSQLException) {
                 throw mSQLException;
             }
-            prod1 = new ArrayList<>();
+            int total5 = 0;
+            Cursor cursor5 = mDb.rawQuery("SELECT * FROM Product WHERE date = '" + android.text.format.DateFormat.format("dd-MM-yyyy", new java.util.Date()) + "'", null);
+            cursor5.moveToFirst();
+            while (!cursor5.isAfterLast()) {
+                total5 = cursor5.getInt(0);
+                cursor5.moveToNext();
+            }
+            cursor5.close();
             for (int i = 0; i < 31; i++) {
                 double total = 0;
+                double total1 = 0;
+                double total2 = 0;
                 int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
                 String date = i + "-" + month + "-" + Calendar.getInstance().get(Calendar.YEAR);
                 DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
                 Date dt = formatter.parse(date);
-                Cursor cursor = mDb.rawQuery("SELECT SUM(" + "Calories" + ") as Total FROM " + "Product WHERE date = '" + String.valueOf(formatter.format(dt)) + "'", null);
+                Cursor cursor = mDb.rawQuery("SELECT SUM(" + "Calories" + ") as Total FROM Product WHERE date = '" + formatter.format(dt) + "'", null);
                 if (cursor.moveToFirst()) {
-                    total = cursor.getInt(cursor.getColumnIndex("Total"));
+                    total1 = cursor.getDouble(cursor.getColumnIndex("Total"));
                 }
+                Cursor cursor1 = mDb.rawQuery("SELECT SUM(" + "dose" + ") as Total FROM Product WHERE date = '" + formatter.format(dt) + "'", null);
+                if (cursor1.moveToFirst()) {
+                    total2 = cursor1.getDouble(cursor1.getColumnIndex("Total"));
+                }
+                total = total1 * total2 / (100 * total5);
                 prod1.add(total);
             }
+
             String view = "";
             for (double elem : prod1) {
                 view += String.valueOf(elem) + " | ";
