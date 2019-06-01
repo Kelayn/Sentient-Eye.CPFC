@@ -5,7 +5,7 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_light" >
+    android:background="#DFDFDF"  >
 
     <Button
         android:id="@+id/butnConf"
@@ -21,7 +21,9 @@
         app:layout_constraintHorizontal_bias="0.361"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.83" />
+        app:layout_constraintVertical_bias="0.83"
+        android:background = "@drawable/roundedbutton"
+        />
 
     <RadioGroup
         android:id="@+id/radioGender"
@@ -183,6 +185,8 @@
         app:layout_constraintHorizontal_bias="0.702"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.834" />
+        app:layout_constraintVertical_bias="0.834"
+        android:background = "@drawable/roundedbutton"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
